@@ -23,7 +23,7 @@ jobs:
     - name: Save the Docker image to a tar file
       run: |
         IMAGE_TAG="innei/shiro:1.2.5"
-        docker save -o my-image-name.tar $IMAGE_TAG
+        docker save -o shiro-1.2.5.tar $IMAGE_TAG
 
     - name: Upload the Docker image as an artifact
       uses: actions/upload-artifact@v3
