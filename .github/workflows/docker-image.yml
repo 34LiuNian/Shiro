@@ -17,12 +17,12 @@ jobs:
 
     - name: Build the Docker image
       run: |
-        IMAGE_TAG="my-image-name:$(date +%s)"
+        IMAGE_TAG="shiro:1.2.7"
         docker build . --file Dockerfile --tag $IMAGE_TAG
 
     - name: Save the Docker image to a tar file
       run: |
-        IMAGE_TAG="Shiro:1.2.7"
+        IMAGE_TAG="shiro:1.2.7"
         docker save -o my-image-name.tar $IMAGE_TAG
 
     - name: Upload the Docker image as an artifact
