@@ -14,5 +14,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: |
+        IMAGE_TAG="my-image-name:$(date +%s)"
+        docker build . --file Dockerfile --tag $IMAGE_TAG
+
+    - name: Save the Docker image to a tar file
+      run: |
+        IMAGE_TAG="Shiro:1.2.7"
+        docker save -o my-image-name.tar $IMAGE_TAG
+
+    - name: Upload the Docker image as an artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: docker-image
+        path: my-image-name.tar
